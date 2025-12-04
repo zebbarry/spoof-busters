@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "spoof-busters"
+version = "0.1.0"
+description = "Detect and reject spoofing"
+authors = ["Zeb Barry <zbarry@stanford.edu>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.11"
+numpy = "<2.3.4"
+pandas = "^2.3.3"
+matplotlib = "^3.10.7"
+tqdm = "^4.67.1"
+gnss-lib-py = "^1.0.4"
+pyarrow = "^22.0.0"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

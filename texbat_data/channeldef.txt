@@ -1,0 +1,83 @@
+============================ channeldef.txt =================================
+This file defines the columns of data in the channel.log file produced by the
+GRID software receiver. Two types of measurement time stamps are given in
+channel.log, both corresponding to the same event, namely, the observables
+measurement event:
+
+    (1) Raw Receiver Time (RRT): This time stamp is linked directly to the
+        receiver's sampling clock.  It starts at zero when the receiver is
+        initialized and is never interrupted or adjusted by the code.  RRT is
+        guaranteed to be non-decreasing.  The increment between subsequent RRT
+        values is only approximately uniform; it may vary by up to a few
+        milliseconds as GRID adjusts its internal updates to keep all channels
+        at approximately the same receiver time.
+
+    (2) Offset Receiver Time (ORT): This time stamp is equal to RRT plus an
+        offset that brings the result close (within a few ms) to true GPS
+        time:
+
+        ORT = RRT + tOffset
+
+       GRID automatically adjusts tOffset every so often to bring ORT within a
+       few ms of true GPS time.  When tOffset is adjusted, a small jump in ORT
+       is introduced and concomitant shifts occur in the pseudorange and
+       carrier phase data.  For maximum resolution, ORT is given in separate
+       columns for week, whole second, and fractional seconds.
+
+=============================================================================
+
+
+Column        Quantity
+
+1 ----------- RRT week number.
+
+2 ----------- RRT seconds of week.
+
+3 ----------- ORT week number.  A value of 9999 indicates that the ORT is not
+              yet valid.  
+
+4 ----------- ORT whole seconds of week.
+
+5 ----------- ORT fractional second. 
+
+6 ----------- Apparent Doppler frequency in Hz (positive for approaching TXs).
+
+7 ----------- Beat carrier phase in cycles (changes in the same sense as
+              pseudorange).
+
+8 ----------- Pseudorange in meters.
+
+9 ----------- Carrier-to-noise ratio (C/N0) in dB-Hz.
+
+10 ---------- Flag indicating whether (1) or not (0) the pseudorange and
+              carrier phase measurements are valid.
+
+11 ---------- Error indicator: An encoded 8-bit value indicating various error
+              states.  Let <i> indicate the ith bit value, with <0> being the
+              LSB.  An error state is indicated by assertion of the
+              corresponding bit: 
+              <0>     Phase tracking anomaly (large phase error)
+              <1>     Spoofing detected
+              <2>     Possible half cycle phase offset
+              <3:7>   Reserved       
+
+12 ---------- Channel status indicator:
+              0       STATUS_NULL
+              1       STATUS_ALLOCATED
+              2       STATUS_ACQUIRED
+              3       STATUS_SYMBOL_LOCK
+              4       STATUS_FREQ_LOCK
+              5       STATUS_PHASE_LOCK
+              6       STATUS_DATA_LOCK
+
+13 ---------- Signal type: An encoded value representing the GenericType and
+              the Group that together specify a unique SignalType.  The
+              encoded value is eqivalent to a single byte of data formatted as
+              [g g g T T T T T], where Group bits are marked 'g' and
+              GenericType bits are marked 'T'. See signaltype.h for
+              GenericType and Group values.
+
+14 ---------- Transmitter identification number (TXID).
+
+=============================================================================
+

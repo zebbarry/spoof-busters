@@ -1,0 +1,26 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Detect Spoofing",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "src/detect_spoofing.py",
+      "console": "integratedTerminal",
+      "args": [
+        "data/yunnan/gnss_observables_all_hours.csv",
+        "./output/",
+        "--ground-truth",
+        "yunnan_spoofing_times.csv",
+        // "--no-d5",
+        "--no-d4",
+        "--no-d2"
+        // "--no-d1",
+        // "--no-d6"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+Processing Summary
+======================================================================
+
+Dataset root: /Users/zebbarry/Desktop/Stanford/AA272/GNSS Dataset (with Interference and Spoofing) Part III/1221/Raw data/12
+Time range: start to end
+Number of epochs: 3581
+Ephemeris type: precise
+C/N0 filter: none
+Elevation filter: none
+
+Position Statistics (ECEF meters):
+  X: mean=2364627052178203136.00, std=2623726764407981056.00
+  Y: mean=4452562695062990336.00, std=4940444161145381888.00
+  Z: mean=-1139324546620512896.00, std=1264163963432229376.00
+  Clock bias: mean=-5168637783166416896.00, std=5734981875780455424.00
